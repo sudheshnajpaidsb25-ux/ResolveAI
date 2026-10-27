@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: resolveai-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: resolveai_user
+      POSTGRES_PASSWORD: resolveai_password
+      POSTGRES_DB: resolveai_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: resolveai-backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://resolveai_user:resolveai_password@db:5432/resolveai_db
+      SECRET_KEY: resolveai-production-secret-key-college-major-project-2026
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: resolveai-frontend
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

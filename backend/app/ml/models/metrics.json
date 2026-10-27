@@ -1,0 +1,42 @@
+{
+  "model_type": "Random Forest Classifier (Ensemble)",
+  "baseline_comparison": {
+    "logistic_regression_f1": 0.8716,
+    "random_forest_f1": 0.8283
+  },
+  "accuracy": 0.9433,
+  "precision": 0.9111,
+  "recall": 0.7593,
+  "f1_score": 0.8283,
+  "roc_auc": 0.9859,
+  "confusion_matrix": [
+    [
+      484,
+      8
+    ],
+    [
+      26,
+      82
+    ]
+  ],
+  "training_samples": 2400,
+  "test_samples": 600,
+  "trained_at": "2026-10-24 13:43:41 UTC",
+  "feature_importances": {
+    "remaining_minutes": 0.401,
+    "consumed_ratio": 0.2592,
+    "elapsed_minutes": 0.0961,
+    "technician_workload": 0.0548,
+    "reassignment_count": 0.0449,
+    "hour_of_day": 0.0203,
+    "priority_Critical": 0.0201,
+    "day_of_week": 0.0156,
+    "priority_Low": 0.0096,
+    "priority_High": 0.0081,
+    "priority_Medium": 0.0072,
+    "category_Security": 0.0061,
+    "category_Database": 0.0056,
+    "impact_Medium": 0.0043,
+    "urgency_Medium": 0.0042
+  }
+}
